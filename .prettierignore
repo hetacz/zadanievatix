@@ -1,0 +1,14 @@
+node_modules
+config
+
+package-lock.json
+package.json
+README.md
+tsconfig.json
+.gitignore
+azure-pipelines.yml
+azure-pipelines-manual.yml
+job-template.yml
+.prettierignore
+.prettierrc
+.env

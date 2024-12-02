@@ -1,0 +1,121 @@
+data and time input
+enter day starting with >=4 should be 04
+enter day 32x should be 2x
+enter day 3x, where x >= 3, should be 0x and cursor on the month input
+enter day 40 should be day 04, and cursor on month input
+enter day xy where x >= 4 (or enter any valid day) && y in [2,9] should write 0x as day and month 0y cursor on year
+enter day x1y where x >= 4 (or enter any valid day) && y in [0,2], should write day 0x and month 1y
+enter day x1y where x >= 4 (or enter any valid day) && y in [3,9], should write day 0x and month 0y
+enter day x0y where x >= 4 (or enter any valid day) && (y = 0 || y = 1) && y in [0,2] should write 0x as day and month 0y
+-- if y not in [0,2] then 0x as day and month 0y
+
+**enter invalid February date and finish typing, it will say invalid
+
+enter valid date
+time:
+
+enter 2x where x in [4,9] should be 0x and cursor on minute input
+enter x where x in [4,9] should be 0x and cursor on minute input
+
+enter xy on minutes where x >= 6 and y >= 6 should be 0y
+enter xy on minutes where x < 6 and y >= 6 should be xy
+
+enter time when minutes already filled it will replace input according to two above lines
+
+use datepicker
+
+===
+
+select type -> near miss, verify Cause of Injury or Near Miss is visible
+ -- verify Cause of Injury or Near Miss is multibox with (x) clearing all the field and (x) near selected clearing selected input
+ -- if other selected texboxt is visible
+select type -> first aid injutry, verify Cause of Injury or Near Miss is visible and Accidents details
+ -- verify injury type is visible and multibox, verify how (x)'es work (WHY IS OTHER AWAYS VISIBLE)
+ -- verify if other injury type then must fill textboxt
+ -- verify injury details is visible and multibox, verify how (x)'es work
+ -- verify if other injury details then must fill textboxt (WHY IS OTHER AWAYS VISIBLE)
+ -- verify What was the severity (WHY THERE IS NO 1. SEVERITY)
+
+fill everything, verify x clears input or all fields in Cause of Injury or Near Miss
+
+===
+
+fill not all required fields -> click submit should be error
+ -- try resubmitting after filling gaps
+
+(!) - select first aid
+ -> fill everything
+ -> cant submit, says error doesn't show where (!)
+
+ -> try submitting without filling everything 
+ -> fill where missing data 
+ -> not possible to resubmit (!)
+ 
+ ===
+ 
+ fill fields with SQL statements
+ 
+ ==
+ 
+ write some messages in chat with emojis
+ add files, see if visible (cant download back (!))
+ upload empty, very large, malicious, .exe, multiple files
+ 
+ ==
+ 
+ automated tests:
+ 
+  - open the page
+	- verify basic fields;
+    - submit should be disabled
+	
+  - open the page
+  - select date time
+    - submit should be enabled
+	- click submit
+		- error toast should be visible
+		- required field divs should have class /error/
+		- submit should be disabled
+	- fill required fields
+		- submit should be enabled
+		- click submit
+			- toast should appear
+			- success message
+ 
+  - open the page
+    - send chat message
+	- it is visible
+	- attach file
+	- it is visible
+ 
+  (successful tests cases end with success popup and blue screen with text)
+  (if files uploaded there is a popup informing about uploading and then blue screen)
+ 
+  - send basic report
+  - send basic report with additional fields
+  - send basic report with chat
+  - send basic report with chat and files
+  - send basic report with additional fields chat and files
+ 
+  - select Near Miss
+    - cause should be visible
+    - select some causes + other
+	  - if other should be visible
+	  - fill and submit
+	  
+  - select First Aid
+    - cause should be visible
+    - select some causes + other
+	  - if other should be visible
+	  - fill and submit 
+ 
+  - send near miss report with single cause
+  - send near miss report with multiple cause
+  - send near miss report with other cause
+  - send near miss report with causes and other cause
+  
+===
+
+Todo:
+fix the date input for mobile
+How fields should be selected for testing (randomly with output written and data driven)
